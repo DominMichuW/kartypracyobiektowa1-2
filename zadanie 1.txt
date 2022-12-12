@@ -1,0 +1,227 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        class Producent
+        {
+            private string nazwa;
+            private string nip;
+            public string getNazwa()
+            {
+                return nazwa;
+            }
+            public string getNip()
+            {
+                return nip;
+
+            }
+            public void SetNazwa(string nazwa)
+            {
+                this.nazwa = nazwa;
+            }
+            public void setNip(string nip)
+            {
+                this.nip = nip;
+            }
+        }
+        class Material
+        {
+            private string typ;
+            private int id;
+            private double cena;
+
+            public string getTyp()
+            {
+                return typ;
+
+            }
+            public void setTyp(string a)
+            {
+                this.typ = a;
+            }
+            public double getCena()
+            {
+                return cena;
+            }
+            public int getId()
+            {
+                return id;
+            }
+            public void setId(int id)
+            {
+                this.id = id;
+            }
+
+        }
+        class Rower
+        {
+            public Producent producent;
+            public Material material;
+            private string kolor;
+            public void jedz()
+            {
+                Console.WriteLine("RUTUTUUTU");
+            }
+            public string getColor()
+            {
+                return kolor;
+            }
+            public void setColor(string kolor)
+            {
+                this.kolor = kolor;
+
+            }
+            public void setMaterial(Material material)
+            {
+                this.material = material;
+            }
+            public  Rower(Producent aproducent)
+            {
+                this.producent = aproducent;
+            }
+            public void dane()
+            {
+                Console.WriteLine($"ten rower został wyprodukowany przez {producent}, jest koloru {kolor} i jest z {material}");
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Producent producent = new Producent();
+            Rower rower = new Rower(producent);
+            Material material = new Material();
+            rower.producent = producent;
+            material.setTyp("Metal");
+            material.setId(1);
+            rower.material = material;
+            producent.SetNazwa("rowerek");
+            producent.setNip("02535");
+            rower.producent = producent;
+            rower.dane();
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+
+zad 2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        class Produkt
+        {
+            private string nazwa;
+            private double cena;
+            private string opis;
+            public string getNazwa()
+            {
+                return nazwa;
+            }
+            public double getCena()
+            {
+                return cena;
+            }
+            public string getOpis()
+            {
+                return opis;
+            }
+            public void produkt()
+            {
+                Console.WriteLine(this.nazwa + this.cena+this.opis);
+            }
+
+        }
+        class Profil 
+        {
+            private string imie;
+            private string drugieImie;
+            private string nazwisko;
+            public string getImie()
+            {
+                return imie;
+            }
+            public string getNazwisko()
+            {
+                return nazwisko;
+            }
+
+        }
+        class Uzytkownik
+        {
+           private string login;
+           private string haslo;
+           private Profil profil;
+           public void loguj()
+            {
+                Console.WriteLine("Zalogowano");
+            }
+            public Uzytkownik(string login, string haslo, Profil profil)
+            {
+                this.login = login;
+                this.haslo = haslo;
+                this.profil = profil;
+            }
+        }
+        class Koszyk
+        {
+            private int id;
+            private Produkt produkt;
+            private Uzytkownik uzytkownik;
+            public int getId()
+            {
+                return id;
+            }
+            public void Operation()
+            {
+                Console.WriteLine("Udanych zakupów");
+            }
+            public Koszyk(int id, Produkt produkt)
+            {
+                this.id = id;
+                this.produkt = produkt;
+            }
+            public void setUzytkownik(Uzytkownik uzytkownik)
+            {
+                this.uzytkownik = uzytkownik;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Produkt produkt = new Produkt();
+            produkt.getNazwa();
+            produkt.getCena();
+            produkt.getOpis();
+            produkt.produkt();
+            Koszyk koszyk = new Koszyk(1,produkt);
+            koszyk.Operation();
+            koszyk.getId();
+            Profil profil = new Profil();
+            Uzytkownik user = new Uzytkownik("alamakota", "Alamakota123", profil);
+            profil.getImie();
+            profil.getNazwisko();
+            user.loguj();
+            Console.ReadKey();
+
+        }
+    }
+}
